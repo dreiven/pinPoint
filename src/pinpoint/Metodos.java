@@ -24,43 +24,47 @@ public class Metodos {
 
         try {
 // Creamos el objeto que encapsula el fichero
-            
+
 //            String[] listadeArchivos = fichero.list();
-                    String res="";
-                    res = JOptionPane.showInputDialog("Indique nombre del archivo y su extension");
-                    fichero = new File(res);
-                 if (!fichero.exists()) { 
-                    fichero.createNewFile();
-                    JOptionPane.showMessageDialog(null, "El fichero se ha creado correctamente");
+            String res = "";
+            res = JOptionPane.showInputDialog("Indique nombre del archivo y su extension");
+            fichero = new File(res);
+            if (!fichero.exists()) {
+                fichero.createNewFile();
+                JOptionPane.showMessageDialog(null, "El fichero se ha creado correctamente");
 //                System.out.println("El fichero se ha creado correctamente");
-                } else {
+            } else {
 //                System.out.println("No ha podido ser creado el fichero");
-                    JOptionPane.showMessageDialog(null, "El fichero no se ha creado correctamente");
-                }
-            
+                JOptionPane.showMessageDialog(null, "El fichero no se ha creado correctamente");
+            }
+
         } catch (Exception ioe) {
             ioe.getMessage();
             ioe.printStackTrace();
         }
-   return fichero;
+        return fichero;
     }
 // SEXOOOOOO
 
     public static File borrarFichero(File fichero) {
+
+        String res = "";
+        res = JOptionPane.showInputDialog("Indique nombre del archivo y su extension a borrar");
+        fichero = new File(res);
+
         try {
 //            File fichero = new File("misCoordenadas.txt");
+            if (res.matches(fichero.getName())){
             fichero.delete();
-            
-            if (fichero.delete()) {
-                JOptionPane.showMessageDialog(null, "Fichero borrado ");
-
-            } else {
+            JOptionPane.showMessageDialog(null, "Fichero borrado ");
+            }
+              else {
                 JOptionPane.showMessageDialog(null, "Fichero no borrado  " + fichero.getName());
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return fichero ;
+        return fichero;
 
     }
 
