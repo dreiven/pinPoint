@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+<?import pinpoint.*?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorP" prefHeight="487.0" prefWidth="518.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinpoint.FXMLDocumentController">
+<stylesheets>
+    <URL value="@estiloDibujo.css" />
+</stylesheets>   
+    <children>
+      <Canvas fx:id="canvas" height="430.0" layoutX="14.0" layoutY="17.0" onMouseClicked="#Mcliked" onMousePressed="#Mpressed" styleClass="canvas" width="313.0" />
+        <Button fx:id="btn_rst" layoutX="332.0" layoutY="249.0" onAction="#Reset" prefHeight="33.0" prefWidth="116.0" text="Reset" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <TextField fx:id="txt_X" layoutX="356.0" layoutY="64.0" prefHeight="25.0" prefWidth="58.0" />
+      <TextField fx:id="txt_Y" layoutX="427.0" layoutY="64.0" prefHeight="25.0" prefWidth="58.0" />
+      <Label id="lbl_X" fx:id="lbl_X" layoutX="356.0" layoutY="38.0" text="X" />
+      <Label id="lbl_Y" fx:id="lbl_Y" layoutX="436.0" layoutY="38.0" text="Y" />
+      <Label fx:id="lbl_coord" layoutX="350.0" layoutY="14.0" text="Coordenadas 1" />
+      <TextField fx:id="txt_Xx" layoutX="356.0" layoutY="178.0" prefHeight="25.0" prefWidth="58.0" />
+      <TextField fx:id="txt_Yy" layoutX="427.0" layoutY="178.0" prefHeight="25.0" prefWidth="58.0" />
+      <Label layoutX="356.0" layoutY="147.0" text="X" />
+      <Label layoutX="429.0" layoutY="147.0" text="Y" />
+      <Label fx:id="lbl_cooR" layoutX="356.0" layoutY="120.0" text="Coordenadas 2" />
+      <Label fx:id="lbl_tg" layoutX="390.0" layoutY="333.0" prefHeight="25.0" prefWidth="85.0" text="Modo Continuo" textFill="GREEN" />
+      <Button fx:id="btn_slr" layoutX="403.0" layoutY="441.0" mnemonicParsing="false" onAction="#Salir" prefHeight="31.0" prefWidth="99.0">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="file:/C:/Users/PC/Documents/NetBeansProjects/pinPoint/src/pinpoint/img/salir_norm.png" />
+               </source>
+            </ImageInput>
+         </effect></Button>
+      <ToggleButton fx:id="tb_cambio" layoutX="427.0" layoutY="358.0" mnemonicParsing="false" onAction="#cambio" prefHeight="25.0" prefWidth="58.0" text="OFF" />
+      <Button fx:id="btn_cr" layoutX="332.0" layoutY="216.0" mnemonicParsing="false" onAction="#botonAccionCrear" prefHeight="33.0" prefWidth="116.0" text="Create File" textAlignment="CENTER">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
+      <Button fx:id="btn_br" layoutX="332.0" layoutY="282.0" mnemonicParsing="false" onAction="#botonAccionBorrar" prefHeight="33.0" prefWidth="116.0" text="Delete File" />
+    </children>
+</AnchorPane>
