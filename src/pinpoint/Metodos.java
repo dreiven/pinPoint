@@ -12,6 +12,11 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javafx.scene.Scene;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +25,7 @@ import javax.swing.JOptionPane;
  */
 public class Metodos {
 
-    public static File crearFichero(File fichero) {
+    public static File guardar(ArrayList<Punto> coord,File fichero) {
 
         try {
 // Creamos el objeto que encapsula el fichero
@@ -29,8 +34,13 @@ public class Metodos {
             String res = "";
             res = JOptionPane.showInputDialog("Indique nombre del archivo y su extension");
             fichero = new File(res);
-            if (!fichero.exists()) {
-                fichero.createNewFile();
+            fichero.createNewFile();
+            if (fichero.exists()) {                
+                FileOutputStream fileout = new FileOutputStream(fichero); //salida
+                //conecta el flujo de bytes al flujo de datos
+                ObjectOutputStream ObjSt = new ObjectOutputStream(fileout);
+                ObjSt.writeObject(coord);
+                ObjSt.close();
                 JOptionPane.showMessageDialog(null, "El fichero se ha creado correctamente");
 //                System.out.println("El fichero se ha creado correctamente");
             } else {
@@ -44,7 +54,6 @@ public class Metodos {
         }
         return fichero;
     }
-// SEXOOOOOO
 
     public static File borrarFichero(File fichero) {
 
@@ -68,40 +77,36 @@ public class Metodos {
 
     }
 
-    public static void PointsCount(Punto coord) {
-        try {
-            ArrayList arrayPuntos = new ArrayList();
-            arrayPuntos.add(coord);
+  
 
-            Iterator<Punto> itr = arrayPuntos.iterator();
 
-            while (itr.hasNext()) {
 
-                System.out.println(itr.next());
+    public static Stage elegirArchivo(Stage pstage){
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Open Resource File");
+    fileChooser.getExtensionFilters().addAll(
+         new ExtensionFilter("Text Files", "*.txt"),
+         new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
+         new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
+         new ExtensionFilter("Epub Files", "*.epub"),
+         new ExtensionFilter("All Files", "*.*"));
+      File selectedFile = fileChooser.showOpenDialog(pstage);
+ 
+ if (selectedFile != null) {
+    
+//    escena.getOwner().display(selectedFile);
+//    pstage.showAndWait();
+ }
 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    return pstage;
     }
-
-    //SEXOOOOOOOOOOOOOO!!!!!!! XDDDDDDDDD
-    public static void escritura(Punto coord) throws IOException {
-        File fichero = new File("misCoordenadas.txt");
-        try {
-            if (fichero.exists()) {
-
-                FileOutputStream fileout = new FileOutputStream(fichero); //salida
-                //conecta el flujo de bytes al flujo de datos
-                ObjectOutputStream ObjSt = new ObjectOutputStream(fileout);
-                ObjSt.writeObject(coord);
-                ObjSt.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
+  
+   
+    
+    
+    
+    
+    
+    
+    
 }

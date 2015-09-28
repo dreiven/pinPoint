@@ -19,13 +19,13 @@
 </stylesheets>   
     <children>
       <Canvas fx:id="canvas" height="430.0" layoutX="14.0" layoutY="17.0" onMouseClicked="#Mcliked" onMousePressed="#Mpressed" styleClass="canvas" width="313.0" />
-        <Button fx:id="btn_rst" layoutX="332.0" layoutY="249.0" onAction="#Reset" prefHeight="33.0" prefWidth="116.0" text="Reset" />
+        <Button fx:id="btn_rst" layoutX="407.0" layoutY="401.0" onAction="#Reset" prefHeight="33.0" prefWidth="93.0" text="Reset" />
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <TextField fx:id="txt_X" layoutX="356.0" layoutY="64.0" prefHeight="25.0" prefWidth="58.0" />
-      <TextField fx:id="txt_Y" layoutX="427.0" layoutY="64.0" prefHeight="25.0" prefWidth="58.0" />
-      <Label id="lbl_X" fx:id="lbl_X" layoutX="356.0" layoutY="38.0" text="X" />
-      <Label id="lbl_Y" fx:id="lbl_Y" layoutX="436.0" layoutY="38.0" text="Y" />
-      <Label fx:id="lbl_coord" layoutX="350.0" layoutY="14.0" text="Coordenadas 1" />
+      <TextField fx:id="txt_X" layoutX="356.0" layoutY="89.0" prefHeight="25.0" prefWidth="58.0" />
+      <TextField fx:id="txt_Y" layoutX="427.0" layoutY="89.0" prefHeight="25.0" prefWidth="58.0" />
+      <Label id="lbl_X" fx:id="lbl_X" layoutX="356.0" layoutY="64.0" text="X" />
+      <Label id="lbl_Y" fx:id="lbl_Y" layoutX="433.0" layoutY="64.0" text="Y" />
+      <Label fx:id="lbl_coord" layoutX="356.0" layoutY="47.0" text="Coordenadas 1" />
       <TextField fx:id="txt_Xx" layoutX="356.0" layoutY="178.0" prefHeight="25.0" prefWidth="58.0" />
       <TextField fx:id="txt_Yy" layoutX="427.0" layoutY="178.0" prefHeight="25.0" prefWidth="58.0" />
       <Label layoutX="356.0" layoutY="147.0" text="X" />
@@ -40,11 +40,32 @@
                </source>
             </ImageInput>
          </effect></Button>
-      <ToggleButton fx:id="tb_cambio" layoutX="427.0" layoutY="358.0" mnemonicParsing="false" onAction="#cambio" prefHeight="25.0" prefWidth="58.0" text="OFF" />
+      <ToggleButton fx:id="tb_cambio" layoutX="424.0" layoutY="362.0" mnemonicParsing="false" onAction="#cambio" prefHeight="25.0" prefWidth="58.0" text="OFF" />
       <Button fx:id="btn_cr" layoutX="332.0" layoutY="216.0" mnemonicParsing="false" onAction="#botonAccionCrear" prefHeight="33.0" prefWidth="116.0" text="Create File" textAlignment="CENTER">
          <font>
             <Font size="10.0" />
          </font></Button>
-      <Button fx:id="btn_br" layoutX="332.0" layoutY="282.0" mnemonicParsing="false" onAction="#botonAccionBorrar" prefHeight="33.0" prefWidth="116.0" text="Delete File" />
+      <Button fx:id="btn_br" layoutX="332.0" layoutY="249.0" mnemonicParsing="false" onAction="#botonAccionBorrar" prefHeight="33.0" prefWidth="116.0" text="Delete File" />
+      <Button fx:id="btn_abrir" layoutX="452.0" layoutY="216.0" mnemonicParsing="false" onAction="#botonAccionAbrir" text="Open" />
+      <Button fx:id="btn_sv" layoutX="453.0" layoutY="249.0" mnemonicParsing="false" onAction="#botonAccionGuardar" prefHeight="33.0" prefWidth="58.0" text="Save" />
+      <MenuBar fx:id="menubar1" layoutX="343.0" layoutY="2.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#Salir" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#botonAccionBorrar" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Manual">
+            <items>
+              <MenuItem fx:id="menubar1_dibujar" mnemonicParsing="false" onAction="#dibujarLinea" text="dibujar" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
     </children>
 </AnchorPane>

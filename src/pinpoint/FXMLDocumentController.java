@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.AnchorPane;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.EventHandler;
@@ -32,6 +33,7 @@ import javafx.scene.input.MouseEvent;
 import static javafx.scene.paint.Color.GREEN;
 import static javafx.scene.paint.Color.RED;
 import javafx.scene.paint.Paint;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -86,17 +88,46 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private File fichero;
     @FXML
-    private int cont;
+    private int cont = 0;
+
+    public void botonAccionGuardar(ActionEvent event) throws IOException {
+
+        Metodos.guardar(arrayPuntos, fichero);
+
+    }
+
+    public void botonAccionAbrir(ActionEvent event) {
+
+        Metodos.elegirArchivo(stage1);
+
+    }
 
     public void botonAccionBorrar(ActionEvent event) {
 
         Metodos.borrarFichero(fichero);
-        
     }
 
     public void botonAccionCrear(ActionEvent event) {
 
-        Metodos.crearFichero(fichero);
+//        Metodos.crearFichero(fichero);
+    }
+
+    @FXML
+    public void PointsCount(Punto coord) {
+        try {
+
+            arrayPuntos.add(coord);
+
+            Iterator<Punto> itr = arrayPuntos.iterator();
+
+            while (itr.hasNext()) {
+
+                System.out.println(itr.next());
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -119,8 +150,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     //se declara metodo reset en el action event del boton reset
-    private void Reset(ActionEvent event
-    ) {
+    private void Reset(ActionEvent event) {
+
         Double resValor = 0.0;
         String resValorString;
         punto1.setX(resValor);
@@ -139,11 +170,8 @@ public class FXMLDocumentController implements Initializable {
         //se crea e inicializa un objeto GraphicsContent para dibujar encima del objeto canvas
         GraphicsContext gc = canvas.getGraphicsContext2D();
         //se da a la propiedad color del objeto gc el valor gris
-        Paint[] colores = {Color.AQUA,Color.BLUE,Color.RED};
-       for  (cont = 0; cont < 2; cont++) {
-           gc.setFill(colores[cont]);    
-           }
-//        gc.setFill(Color.GRAY);
+//        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        gc.setFill(Color.GRAY);
         //se crea un rectangulo gris del tamaño del canvas
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
@@ -196,13 +224,9 @@ public class FXMLDocumentController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 //se pasa el valor del metodo getX del evento de mouse a la variable x2
-//                punto2.setLocation(t.getX(), t.getY());
-
                 punto1.setX(t.getX());
                 punto1.setY(t.getY());
 
-//                int posX = MouseInfo.getPointerInfo().getLocation().x;
-//                int posY = MouseInfo.getPointerInfo().getLocation().y;
                 //si la variable x1 contiene un valor mayor que 0
                 if (punto2.getX() != null) {
                     //se castea a string el valor de x1 que esta en double
@@ -224,16 +248,10 @@ public class FXMLDocumentController implements Initializable {
                     //se crea una linea a traves del metodo strokeLine del objeto gc GraphicsContent
 
                     gc.strokeLine(punto1.getX(), punto1.getY(), punto2.getX(), punto2.getY());
-                    Metodos.PointsCount(punto1);
-                    Metodos.PointsCount(punto2);
-                    try {
-                        Metodos.escritura(punto1);
-                        Metodos.escritura(punto2);
-
-//                    Metodos.listarPuntos(arrayPuntos);
-                    } catch (IOException ex) {
-                        Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    PointsCount(punto1);
+                    PointsCount(punto2);
+                    cont = 0;
+//                  
                 }
 
             }
@@ -247,6 +265,21 @@ public class FXMLDocumentController implements Initializable {
         Stage stage1 = (Stage) btn_slr.getScene().getWindow();
         //accedemos al objeto stage1 y le damos el metodo para cerrar 
         stage1.close();
+
+    }
+
+    @FXML
+    public void dibujarLinea() {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        Double corX = Double.parseDouble(txt_X.getText());
+        //se castea a string el valor de y1 que esta en double
+        Double corY = Double.parseDouble(txt_Y.getText());
+        //se castea a string el valor de x2 que esta en double
+        Double corX2 = Double.parseDouble(txt_Xx.getText());
+        //se castea a string el valor de y2 que esta en double
+        Double corY2 = Double.parseDouble(txt_Yy.getText());
+
+        gc.strokeLine(corX, corY, corX2, corY2);
 
     }
 

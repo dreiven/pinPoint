@@ -5,13 +5,10 @@
  */
 package pinpoint;
 
-import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 
 /**
@@ -19,26 +16,27 @@ import javafx.stage.Stage;
  * @author PC
  */
 public class PinPoint extends Application {
-
+    public static Stage parentWindow;
+    
     @Override
     public void start(Stage primarystage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-
+        parentWindow = primarystage;
         Scene scene = new Scene(root);
 
         primarystage.setScene(scene);
+
         primarystage.show();
-      
-         
+
     }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
+
         launch(args);
-        
+
     }
 
 }
