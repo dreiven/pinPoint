@@ -18,8 +18,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.AnchorPane;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -32,7 +30,6 @@ import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
 import static javafx.scene.paint.Color.GREEN;
 import static javafx.scene.paint.Color.RED;
-import javafx.scene.paint.Paint;
 import javax.swing.JOptionPane;
 
 /**
@@ -274,6 +271,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void dibujarLinea() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        if (txt_X.getText().isEmpty()== false){
         Double corX = Double.parseDouble(txt_X.getText());
         //se castea a string el valor de y1 que esta en double
         Double corY = Double.parseDouble(txt_Y.getText());
@@ -284,7 +282,11 @@ public class FXMLDocumentController implements Initializable {
         gc.setStroke(Color.BLUE);
         gc.setLineWidth(5);
         gc.strokeLine(corX, corY, corX2, corY2);
-
+        }else{
+        
+            JOptionPane.showMessageDialog(null, "Debe introducir las coordenadas primero");
+        
+        }
     }
 
     @FXML

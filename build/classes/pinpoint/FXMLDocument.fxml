@@ -52,7 +52,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#Salir" text="Close" />
+              <MenuItem fx:id="menubar1_itm_close" mnemonicParsing="false" onAction="#Salir" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
