@@ -86,39 +86,36 @@ public class FXMLDocumentController implements Initializable {
     private File fichero;
     @FXML
     private int cont = 0;
-
+     //metodo de action event para guardar el fichero con datos asociado con el menubar
     public void botonAccionGuardar(ActionEvent event) throws IOException {
 
         Metodos.guardar(arrayPuntos, fichero);
 
     }
-
+//metodo de action event para abrir un fichero nuevo 
     public void botonAccionAbrir(ActionEvent event) {
 
         Metodos.elegirArchivo(stage1);
 
     }
-
+//metodo de action event para borrar un fichero indicado especificamente asociado con el menubar y el boton delete
     public void botonAccionBorrar(ActionEvent event) {
 
         Metodos.borrarFichero(fichero);
     }
 
-    public void botonAccionCrear(ActionEvent event) {
-
-//        Metodos.crearFichero(fichero);
-    }
 
     @FXML
+    //metodo para almacenar los objetos punto en un array de puntos
     public void PointsCount(Punto coord) {
         try {
-
+           //añadimos al array de puntos el parametro punto enviado en el metodo
             arrayPuntos.add(coord);
-
+           //se declara objeto iterator para recorrer el array de puntos  
             Iterator<Punto> itr = arrayPuntos.iterator();
-
+           //mientras el objeto iterator itr tenga datos (true) sigue avanzando
             while (itr.hasNext()) {
-
+           //muestra los objeto de arraypuntos a traves del objeto iterator y el metodo next()
                 System.out.println(itr.next());
 
             }
@@ -129,17 +126,22 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
+    //se declara metodo para cambiar el toggle button de on a off
     private void cambio() {
-
+      //si el toggle button esta Selected 
         if (tb_cambio.isSelected()) {
+            //seteo de la propiedad text en el toggle button a ON
             tb_cambio.setText("ON");
+            //seteo de la propiedad text de la label 
             lbl_tg.setText("Modo Discontinuo");
+            //seteo de la propiedad color del text dl objeto  label
             lbl_tg.setTextFill(RED);
         } else {
-//            tb_cambio.setSelected(false);
+      //seteo de la propiedad text en el toggle button a OFF
             tb_cambio.setText("OFF");
+            //seteo de la propiedad text de la label 
             lbl_tg.setText("Modo Continuo");
-            tb_cambio.arm();
+            //seteo de la propiedad color del text dl objeto  label
             lbl_tg.setTextFill(GREEN);
         }
 
@@ -148,7 +150,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     //se declara metodo reset en el action event del boton reset
     private void Reset(ActionEvent event) {
-
         Double resValor = 0.0;
         String resValorString;
         punto1.setX(resValor);
@@ -185,8 +186,6 @@ public class FXMLDocumentController implements Initializable {
             @Override
             public void handle(MouseEvent e) {
 
-//           punto= new Image(Main.class.getResourceAsStream("punto.png"));
-//           final HBox pictureRegion = new HBox();
                 punto2.setX(e.getX());
                 punto2.setY(e.getY());
                 //se castea a string el valor de x1 que esta en double
@@ -244,10 +243,13 @@ public class FXMLDocumentController implements Initializable {
                     txt_Xx.setText(corX2);
                     //se setea la propiedad setText del objeto txt_Yy con el string resultante del casteo de la variable y2
                     txt_Yy.setText(corY2);
-                    //se crea una linea a traves del metodo strokeLine del objeto gc GraphicsContent
+                    //se seta a verde el color de las lineas creadas a traves de este metodo
                     gc.setStroke(Color.FORESTGREEN);
+                    //se setea a 2 el ancho de las lineas
                     gc.setLineWidth(2);
+                    //se le pasa al metodo strokeline los 4 parametro necesarios para dibujar una linea todos en double
                     gc.strokeLine(punto1.getX(), punto1.getY(), punto2.getX(), punto2.getY());
+                    //se le pasa al metodo Pointscount los objeto punto 1 y punto 2 con las coordenadas de click del raton
                     PointsCount(punto1);
                     PointsCount(punto2);
                     cont = 0;
@@ -269,30 +271,41 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
+    //metodo para dibujar lineas a partir de datos enviados a traves de los textfield
     public void dibujarLinea() {
+        //se declara objeto graphicc para dibujar  en el canvas 
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        //si el texto del primer textfield no esta vacio
         if (txt_X.getText().isEmpty()== false){
+            //se castea la coordenada introducida de String a Double 
         Double corX = Double.parseDouble(txt_X.getText());
-        //se castea a string el valor de y1 que esta en double
+       //se castea la coordenada introducida de String a Double
         Double corY = Double.parseDouble(txt_Y.getText());
-        //se castea a string el valor de x2 que esta en double
+        //se castea la coordenada introducida de String a Double
         Double corX2 = Double.parseDouble(txt_Xx.getText());
-        //se castea a string el valor de y2 que esta en double
+        //se castea la coordenada introducida de String a Double
         Double corY2 = Double.parseDouble(txt_Yy.getText());
+        //seteamos a azul las nuevas lineas creadas a traves de este metodo
         gc.setStroke(Color.BLUE);
+        //seteamos a 5 el ancho de las lineas creadas
         gc.setLineWidth(5);
+        //se le pasa al metodo strokeline los 4 parametro necesarios para dibujar una linea todos en double
         gc.strokeLine(corX, corY, corX2, corY2);
         }else{
-        
+           //si el txt de las coordenadas esta vacio se informa al usuario con un mensaje en pantalla
             JOptionPane.showMessageDialog(null, "Debe introducir las coordenadas primero");
         
         }
     }
 
     @FXML
+    //se declara metodo para borrar lineas
     public void borrarLinea() {
+        //se declara objeto graphicc para dibujar  en el canvas 
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        //se setea el color para rellenar el canvas
         gc.setFill(Color.GRAY);
+        //se dibuja un cuadrado en gris con las medidas de todo el canvas para tapar cualquier linea dibujada
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
        
 
