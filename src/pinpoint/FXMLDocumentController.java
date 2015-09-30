@@ -200,6 +200,8 @@ public class FXMLDocumentController implements Initializable {
                 //se da a la propiedad color del objeto gc el valor gris
                 if (tb_cambio.isSelected()) {
                     gc.setFill(Color.GRAY);
+                    gc.setStroke(Color.RED);
+                    gc.setLineWidth(5);
                     //se crea un rectangulo gris del tamaño del canvas
                     gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 }
@@ -246,7 +248,8 @@ public class FXMLDocumentController implements Initializable {
                     //se setea la propiedad setText del objeto txt_Yy con el string resultante del casteo de la variable y2
                     txt_Yy.setText(corY2);
                     //se crea una linea a traves del metodo strokeLine del objeto gc GraphicsContent
-
+                    gc.setStroke(Color.FORESTGREEN);
+                    gc.setLineWidth(2);
                     gc.strokeLine(punto1.getX(), punto1.getY(), punto2.getX(), punto2.getY());
                     PointsCount(punto1);
                     PointsCount(punto2);
@@ -278,8 +281,18 @@ public class FXMLDocumentController implements Initializable {
         Double corX2 = Double.parseDouble(txt_Xx.getText());
         //se castea a string el valor de y2 que esta en double
         Double corY2 = Double.parseDouble(txt_Yy.getText());
-
+        gc.setStroke(Color.BLUE);
+        gc.setLineWidth(5);
         gc.strokeLine(corX, corY, corX2, corY2);
+
+    }
+
+    @FXML
+    public void borrarLinea() {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.GRAY);
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+       
 
     }
 

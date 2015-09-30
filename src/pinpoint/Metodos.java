@@ -8,15 +8,11 @@ package pinpoint;
 //import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
-import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javax.swing.JOptionPane;
 
 /**

@@ -94,8 +94,8 @@ and open the template in the editor.
 .menubar1{
     -fx-background-color: cadetblue;
     -fx-border-color:  #f0cd90;
-    -fx-border-width: 2
-
+    -fx-border-width: 2;
+    
 }
 
 .menubar1 .label {
@@ -114,4 +114,19 @@ and open the template in the editor.
     -fx-font-size: 12 pt;
     -fx-label-line-length: 8;
 
+}
+
+
+*.menubar1 {
+    -fx-background-color:linear-gradient ;
+        
+        
+}
+ 
+.menu {
+    -fx-text-fill: #ffffff;
+}
+ 
+*.menu-item {
+    -fx-text-fill: #ffffff;
 }
