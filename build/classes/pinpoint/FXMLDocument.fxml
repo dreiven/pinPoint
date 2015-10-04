@@ -31,7 +31,7 @@
       <Label layoutX="356.0" layoutY="147.0" text="X" />
       <Label layoutX="429.0" layoutY="147.0" text="Y" />
       <Label fx:id="lbl_cooR" layoutX="356.0" layoutY="120.0" text="Coordenadas 2" />
-      <Label fx:id="lbl_tg" layoutX="332.0" layoutY="337.0" prefHeight="25.0" prefWidth="116.0" text="Modo Continuo" textFill="GREEN" />
+      <Label fx:id="lbl_tg" layoutX="327.0" layoutY="295.0" prefHeight="25.0" prefWidth="116.0" text="Modo Continuo" textFill="GREEN" />
       <Button fx:id="btn_slr" layoutX="403.0" layoutY="441.0" mnemonicParsing="false" onAction="#Salir" prefHeight="31.0" prefWidth="99.0">
          <effect>
             <ImageInput>
@@ -68,5 +68,6 @@
           </Menu>
         </menus>
       </MenuBar>
+      <TextArea fx:id="tx_area" layoutX="327.0" layoutY="330.0" prefHeight="73.0" prefWidth="116.0" />
     </children>
 </AnchorPane>

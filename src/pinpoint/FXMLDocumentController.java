@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -77,7 +78,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Punto punto2 = new Punto();
     @FXML
-    private Stage stage1;
+    private Stage stage1 = new Stage();
     @FXML
     private ArrayList arrayPuntos = new ArrayList();
     @FXML
@@ -86,6 +87,8 @@ public class FXMLDocumentController implements Initializable {
     private File fichero;
     @FXML
     private int cont = 0;
+    @FXML
+    private TextArea tx_area;
      //metodo de action event para guardar el fichero con datos asociado con el menubar
     public void botonAccionGuardar(ActionEvent event) throws IOException {
 
@@ -93,7 +96,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 //metodo de action event para abrir un fichero nuevo 
-    public void botonAccionAbrir(ActionEvent event) {
+    public void botonAccionAbrir(ActionEvent event) throws IOException {
 
         Metodos.elegirArchivo(stage1);
 
@@ -108,6 +111,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     //metodo para almacenar los objetos punto en un array de puntos
     public void PointsCount(Punto coord) {
+        String xy;
         try {
            //añadimos al array de puntos el parametro punto enviado en el metodo
             arrayPuntos.add(coord);
@@ -115,8 +119,12 @@ public class FXMLDocumentController implements Initializable {
             Iterator<Punto> itr = arrayPuntos.iterator();
            //mientras el objeto iterator itr tenga datos (true) sigue avanzando
             while (itr.hasNext()) {
-           //muestra los objeto de arraypuntos a traves del objeto iterator y el metodo next()
-                System.out.println(itr.next());
+                xy = itr.next().toString();
+              //muestra los objeto de arraypuntos a traves del objeto iterator y el metodo next()
+//                System.out.println(itr.next().toString());
+                tx_area.setWrapText(true);
+                tx_area.setText(xy);
+                
 
             }
         } catch (Exception e) {
@@ -227,6 +235,7 @@ public class FXMLDocumentController implements Initializable {
 
                 //si la variable x1 contiene un valor mayor que 0
                 if (punto2.getX() != null) {
+                    
                     //se castea a string el valor de x1 que esta en double
                     String corX = Double.toString(punto1.getX());
                     //se castea a string el valor de y1 que esta en double
@@ -276,7 +285,7 @@ public class FXMLDocumentController implements Initializable {
         //se declara objeto graphicc para dibujar  en el canvas 
         GraphicsContext gc = canvas.getGraphicsContext2D();
         //si el texto del primer textfield no esta vacio
-        if (txt_X.getText().isEmpty()== false){
+        if (!txt_X.getText().isEmpty()){
             //se castea la coordenada introducida de String a Double 
         Double corX = Double.parseDouble(txt_X.getText());
        //se castea la coordenada introducida de String a Double

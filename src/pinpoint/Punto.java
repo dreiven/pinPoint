@@ -44,7 +44,9 @@ public class Punto implements Serializable {
 
     @Override
     public String toString() {
-        return "Coordenadas {" + "X = " + this.x + " , Y = " + this.y + '}';
+        return "Coordenadas \n"
+                + "X= "+ this.x +"\n"+ 
+                  "Y= "+ this.y;
 
     }
 

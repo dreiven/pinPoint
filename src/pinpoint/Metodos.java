@@ -8,8 +8,10 @@ package pinpoint;
 //import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -21,7 +23,7 @@ import javax.swing.JOptionPane;
  */
 public class Metodos {
 
-    public static File guardar(ArrayList<Punto> coord,File fichero) {
+    public static File guardar(ArrayList<Punto> coord, File fichero) {
 
         try {
 // Creamos el objeto que encapsula el fichero
@@ -31,7 +33,7 @@ public class Metodos {
             res = JOptionPane.showInputDialog("Indique nombre del archivo y su extension");
             fichero = new File(res);
             fichero.createNewFile();
-            if (fichero.exists()) {                
+            if (fichero.exists()) {
                 FileOutputStream fileout = new FileOutputStream(fichero); //salida
                 //conecta el flujo de bytes al flujo de datos
                 ObjectOutputStream ObjSt = new ObjectOutputStream(fileout);
@@ -59,11 +61,10 @@ public class Metodos {
 
         try {
 //            File fichero = new File("misCoordenadas.txt");
-            if (res.matches(fichero.getName())){
-            fichero.delete();
-            JOptionPane.showMessageDialog(null, "Fichero borrado ");
-            }
-              else {
+            if (res.matches(fichero.getName())) {
+                fichero.delete();
+                JOptionPane.showMessageDialog(null, "Fichero borrado ");
+            } else {
                 JOptionPane.showMessageDialog(null, "Fichero no borrado  " + fichero.getName());
             }
         } catch (Exception e) {
@@ -73,36 +74,27 @@ public class Metodos {
 
     }
 
-  
+    public static Stage elegirArchivo(Stage pstage) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(
+                new ExtensionFilter("Text Files", "*.txt"),
+                new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
+                new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
+                new ExtensionFilter("Epub Files", "*.epub"),
+                new ExtensionFilter("All Files", "*.*"));
+        File selectedFile = fileChooser.showOpenDialog(pstage);
 
+        if (selectedFile != null) {
+            pstage.setTitle("notepad");
 
-
-    public static Stage elegirArchivo(Stage pstage){
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Open Resource File");
-    fileChooser.getExtensionFilters().addAll(
-         new ExtensionFilter("Text Files", "*.txt"),
-         new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
-         new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
-         new ExtensionFilter("Epub Files", "*.epub"),
-         new ExtensionFilter("All Files", "*.*"));
-      File selectedFile = fileChooser.showOpenDialog(pstage);
- 
- if (selectedFile != null) {
-    
-//    escena.getOwner().display(selectedFile);
+            pstage.show();
+           
 //    pstage.showAndWait();
- }
+//    selectedFile.getParent();
+        }
 
-    return pstage;
+        return pstage;
     }
-  
-   
-    
-    
-    
-    
-    
-    
-    
+
 }
