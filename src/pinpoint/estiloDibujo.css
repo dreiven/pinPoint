@@ -142,7 +142,7 @@ and open the template in the editor.
 *.menu-item {
     -fx-text-fill: #ffffff;
 }
-tx_area {
+.tx_area {
 /*    margin: 0;
     padding: 0 4px;
     color: #444;
@@ -150,6 +150,8 @@ tx_area {
     background: #fff;*/
     -fx-font-family: "Comic Sans MS";
     -fx-font-size: 15px;
+    -fx-fill: blueviolet;
+    -fx-font: bold;
 }
 .title {
     -fx-font-size: 16px;
