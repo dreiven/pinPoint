@@ -151,7 +151,7 @@ and open the template in the editor.
     -fx-font-family: "Comic Sans MS";
     -fx-font-size: 15px;
     -fx-fill: blueviolet;
-    -fx-font: bold;
+    -fx-fill: blue;
 }
 .title {
     -fx-font-size: 16px;

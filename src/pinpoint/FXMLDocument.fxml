@@ -18,7 +18,7 @@
     <URL value="@estiloDibujo.css" />
 </stylesheets>   
     <children>
-      <Canvas fx:id="canvas" height="430.0" layoutX="14.0" layoutY="17.0" onMouseClicked="#Mcliked" onMousePressed="#Mpressed" styleClass="canvas" width="313.0" />
+      <Canvas fx:id="canvas" height="458.0" layoutX="14.0" layoutY="17.0" onMouseClicked="#Mcliked" onMousePressed="#Mpressed" styleClass="canvas" width="293.0" />
         <Button fx:id="btn_rst" layoutX="452.0" layoutY="372.0" onAction="#Reset" prefHeight="33.0" prefWidth="60.0" text="Reset" />
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <TextField fx:id="txt_X" layoutX="356.0" layoutY="89.0" prefHeight="25.0" prefWidth="58.0" />

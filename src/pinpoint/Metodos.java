@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
@@ -97,4 +98,29 @@ public class Metodos {
         return pstage;
     }
 
+    public  static Double ordenarArray( Double[][] array){
+        
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                //le pasamos al printf primer parametro con el espacio a ocupar por el valor %4, 
+                //la cantidad de decimales .3 a mostrar y el tipo de datos float f 
+                System.out.printf("%4.3f   ", array[i][j]);
+//                System.out.println("\n");
+            }
+           
+        }
+        
+   
+    return 0.0;
+    }
+
+//    @Override
+//    public String toString() {
+//         
+//        
+//        return null ;
+//    }
+    
+    
+    
 }

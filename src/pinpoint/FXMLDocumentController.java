@@ -89,42 +89,44 @@ public class FXMLDocumentController implements Initializable {
     private int cont = 0;
     @FXML
     private TextArea tx_area;
-     //metodo de action event para guardar el fichero con datos asociado con el menubar
+
+    //metodo de action event para guardar el fichero con datos asociado con el menubar
+
     public void botonAccionGuardar(ActionEvent event) throws IOException {
 
         Metodos.guardar(arrayPuntos, fichero);
 
     }
 //metodo de action event para abrir un fichero nuevo 
+
     public void botonAccionAbrir(ActionEvent event) throws IOException {
 
         Metodos.elegirArchivo(stage1);
 
     }
 //metodo de action event para borrar un fichero indicado especificamente asociado con el menubar y el boton delete
+
     public void botonAccionBorrar(ActionEvent event) {
 
         Metodos.borrarFichero(fichero);
     }
-
 
     @FXML
     //metodo para almacenar los objetos punto en un array de puntos
     public void PointsCount(Punto coord) {
         String xy;
         try {
-           //añadimos al array de puntos el parametro punto enviado en el metodo
+            //añadimos al array de puntos el parametro punto enviado en el metodo
             arrayPuntos.add(coord);
-           //se declara objeto iterator para recorrer el array de puntos  
+            //se declara objeto iterator para recorrer el array de puntos  
             Iterator<Punto> itr = arrayPuntos.iterator();
-           //mientras el objeto iterator itr tenga datos (true) sigue avanzando
+            //mientras el objeto iterator itr tenga datos (true) sigue avanzando
             while (itr.hasNext()) {
                 xy = itr.next().toString();
-              //muestra los objeto de arraypuntos a traves del objeto iterator y el metodo next()
+                //muestra los objeto de arraypuntos a traves del objeto iterator y el metodo next()
 //                System.out.println(itr.next().toString());
                 tx_area.setWrapText(true);
                 tx_area.setText(xy);
-                
 
             }
         } catch (Exception e) {
@@ -136,7 +138,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     //se declara metodo para cambiar el toggle button de on a off
     private void cambio() {
-      //si el toggle button esta Selected 
+        //si el toggle button esta Selected 
         if (tb_cambio.isSelected()) {
             //seteo de la propiedad text en el toggle button a ON
             tb_cambio.setText("ON");
@@ -145,7 +147,7 @@ public class FXMLDocumentController implements Initializable {
             //seteo de la propiedad color del text dl objeto  label
             lbl_tg.setTextFill(RED);
         } else {
-      //seteo de la propiedad text en el toggle button a OFF
+            //seteo de la propiedad text en el toggle button a OFF
             tb_cambio.setText("OFF");
             //seteo de la propiedad text de la label 
             lbl_tg.setText("Modo Continuo");
@@ -235,7 +237,7 @@ public class FXMLDocumentController implements Initializable {
 
                 //si la variable x1 contiene un valor mayor que 0
                 if (punto2.getX() != null) {
-                    
+
                     //se castea a string el valor de x1 que esta en double
                     String corX = Double.toString(punto1.getX());
                     //se castea a string el valor de y1 que esta en double
@@ -285,25 +287,25 @@ public class FXMLDocumentController implements Initializable {
         //se declara objeto graphicc para dibujar  en el canvas 
         GraphicsContext gc = canvas.getGraphicsContext2D();
         //si el texto del primer textfield no esta vacio
-        if (!txt_X.getText().isEmpty()){
+        if (!txt_X.getText().isEmpty()) {
             //se castea la coordenada introducida de String a Double 
-        Double corX = Double.parseDouble(txt_X.getText());
-       //se castea la coordenada introducida de String a Double
-        Double corY = Double.parseDouble(txt_Y.getText());
-        //se castea la coordenada introducida de String a Double
-        Double corX2 = Double.parseDouble(txt_Xx.getText());
-        //se castea la coordenada introducida de String a Double
-        Double corY2 = Double.parseDouble(txt_Yy.getText());
-        //seteamos a azul las nuevas lineas creadas a traves de este metodo
-        gc.setStroke(Color.BLUE);
-        //seteamos a 5 el ancho de las lineas creadas
-        gc.setLineWidth(5);
-        //se le pasa al metodo strokeline los 4 parametro necesarios para dibujar una linea todos en double
-        gc.strokeLine(corX, corY, corX2, corY2);
-        }else{
-           //si el txt de las coordenadas esta vacio se informa al usuario con un mensaje en pantalla
+            Double corX = Double.parseDouble(txt_X.getText());
+            //se castea la coordenada introducida de String a Double
+            Double corY = Double.parseDouble(txt_Y.getText());
+            //se castea la coordenada introducida de String a Double
+            Double corX2 = Double.parseDouble(txt_Xx.getText());
+            //se castea la coordenada introducida de String a Double
+            Double corY2 = Double.parseDouble(txt_Yy.getText());
+            //seteamos a azul las nuevas lineas creadas a traves de este metodo
+            gc.setStroke(Color.BLUE);
+            //seteamos a 5 el ancho de las lineas creadas
+            gc.setLineWidth(5);
+            //se le pasa al metodo strokeline los 4 parametro necesarios para dibujar una linea todos en double
+            gc.strokeLine(corX, corY, corX2, corY2);
+        } else {
+            //si el txt de las coordenadas esta vacio se informa al usuario con un mensaje en pantalla
             JOptionPane.showMessageDialog(null, "Debe introducir las coordenadas primero");
-        
+
         }
     }
 
@@ -316,13 +318,16 @@ public class FXMLDocumentController implements Initializable {
         gc.setFill(Color.GRAY);
         //se dibuja un cuadrado en gris con las medidas de todo el canvas para tapar cualquier linea dibujada
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-       
-
+///////////////////////
+        Double[][] prueba = {
+         {1.012,2.123,3.345,4.456,5.543,6.543,7.456,8.673,9.456,0.356},
+         {7.133,0.135,8.456,2.654,1.234,10.067,54.456,9.432,23.235,11.959}
+        };
+        Metodos.ordenarArray(prueba);
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb
-    ) {
+    public void initialize(URL url, ResourceBundle rb) {
 
         // TODO
     }
