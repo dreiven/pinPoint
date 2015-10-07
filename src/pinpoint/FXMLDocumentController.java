@@ -295,19 +295,20 @@ public class FXMLDocumentController implements Initializable {
             Double corX2 = Double.parseDouble(txt_Xx.getText());
             //se castea la coordenada introducida de String a Double
             Double corY2 = Double.parseDouble(txt_Yy.getText());
-            //si el texto del primer textfield no esta vacio
-        if (!txt_X.getText().isEmpty() && corX > canvas.getWidth() ) {
+            //si el texto del primer textfield no esta vacio y si corX es menor q el ancho del canvas
+        if (!txt_X.getText().isEmpty() && !txt_Y.getText().isEmpty() && !txt_Xx.getText().isEmpty() && !txt_Yy.getText().isEmpty() 
+                && corX < canvas.getWidth() && corY < canvas.getHeight() &&  corX2 < canvas.getWidth() && corY2 < canvas.getHeight() ) {
             
             //seteamos a azul las nuevas lineas creadas a traves de este metodo
             gc.setStroke(Color.BLUE);
             //seteamos a 5 el ancho de las lineas creadas
-            gc.setLineWidth(5);
+            gc.setLineWidth(5);           
             //se le pasa al metodo strokeline los 4 parametro necesarios para dibujar una linea todos en double
             gc.strokeLine(corX, corY, corX2, corY2);
         } else {
-            //si el txt de las coordenadas esta vacio se informa al usuario con un mensaje en pantalla
-            JOptionPane.showMessageDialog(null, "Debe introducir las coordenadas primero");
-
+            //si el txt de las coordenadas esta vacio o excede la capacidad maxima del canvas se informa al usuario con un mensaje en pantalla
+            JOptionPane.showMessageDialog(null, "Debe introducir coordenadas correctas primero");
+            JOptionPane.showMessageDialog(null, " Width X  Canvas Max : 293 ,  Height Y  Canvas Max : 458 ");
         }
     }
 
