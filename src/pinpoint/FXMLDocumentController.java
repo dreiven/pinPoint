@@ -286,9 +286,8 @@ public class FXMLDocumentController implements Initializable {
     public void dibujarLinea() {
         //se declara objeto graphicc para dibujar  en el canvas 
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        //si el texto del primer textfield no esta vacio
-        if (!txt_X.getText().isEmpty()) {
-            //se castea la coordenada introducida de String a Double 
+        
+        //se castea la coordenada introducida de String a Double 
             Double corX = Double.parseDouble(txt_X.getText());
             //se castea la coordenada introducida de String a Double
             Double corY = Double.parseDouble(txt_Y.getText());
@@ -296,6 +295,9 @@ public class FXMLDocumentController implements Initializable {
             Double corX2 = Double.parseDouble(txt_Xx.getText());
             //se castea la coordenada introducida de String a Double
             Double corY2 = Double.parseDouble(txt_Yy.getText());
+            //si el texto del primer textfield no esta vacio
+        if (!txt_X.getText().isEmpty() && corX > canvas.getWidth() ) {
+            
             //seteamos a azul las nuevas lineas creadas a traves de este metodo
             gc.setStroke(Color.BLUE);
             //seteamos a 5 el ancho de las lineas creadas
