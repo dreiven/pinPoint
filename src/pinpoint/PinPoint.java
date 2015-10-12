@@ -20,7 +20,7 @@ public class PinPoint extends Application {
     
     @Override
     public void start(Stage primarystage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocumentPrime.fxml"));
         parentWindow = primarystage;
         Scene scene = new Scene(root);
 
