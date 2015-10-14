@@ -296,8 +296,7 @@ public class FXMLControllerPrime implements Initializable {
             //se castea la coordenada introducida de String a Double
             Double corY2 = Double.parseDouble(txt_Yy.getText());
             //si el texto del primer textfield no esta vacio y si corX es menor q el ancho del canvas
-        if (!txt_X.getText().isEmpty() && !txt_Y.getText().isEmpty() && !txt_Xx.getText().isEmpty() && !txt_Yy.getText().isEmpty() 
-                && corX < canvas.getWidth() && corY < canvas.getHeight() &&  corX2 < canvas.getWidth() && corY2 < canvas.getHeight() ) {
+        if (Metodos.validarTexto(txt_X,txt_Y,txt_Xx,txt_Yy) && Metodos.validarCoordenadas(corY, corY, corX2, corY2,canvas)) {
             
             //seteamos a azul las nuevas lineas creadas a traves de este metodo
             gc.setStroke(Color.BLUE);

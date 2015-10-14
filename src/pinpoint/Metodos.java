@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -114,13 +116,24 @@ public class Metodos {
     return 0.0;
     }
 
-//    @Override
-//    public String toString() {
-//         
-//        
-//        return null ;
-//    }
+
+    public static Boolean validarTexto(TextField campo,TextField campo2,TextField campo3,TextField campo4) {
+         if (!campo.getText().isEmpty() && !campo2.getText().isEmpty() &&!campo3.getText().isEmpty() && !campo4.getText().isEmpty() ){
+        
+        return true ;
+         }
+         return false;
+    }
     
+    public static Boolean validarCoordenadas(Double corX,Double corY,Double corX2,Double corY2, Canvas canvas){
     
+    if(corX < canvas.getWidth() && corY < canvas.getHeight() && corX2 < canvas.getWidth() && corY2 < canvas.getHeight()){
+    
+    return true;
+    
+    }
+    
+    return false;
+    }
     
 }
