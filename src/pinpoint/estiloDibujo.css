@@ -37,7 +37,7 @@ and open the template in the editor.
 
 #btn_slr{
 
-    -fx-background-image: url("/img/salir_norm.png");
+    -fx-background-image: url("img/salir_norm.png");
 
 
 }

@@ -91,7 +91,6 @@ public class FXMLControllerPrime implements Initializable {
     private TextArea tx_area;
 
     //metodo de action event para guardar el fichero con datos asociado con el menubar
-
     public void botonAccionGuardar(ActionEvent event) throws IOException {
 
         Metodos.guardar(arrayPuntos, fichero);
@@ -286,28 +285,39 @@ public class FXMLControllerPrime implements Initializable {
     public void dibujarLinea() {
         //se declara objeto graphicc para dibujar  en el canvas 
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        
-        //se castea la coordenada introducida de String a Double 
-            Double corX = Double.parseDouble(txt_X.getText());
+        Double corX;
+        //se castea la coordenada introducida de String a Double
+        Double corY;
+        //se castea la coordenada introducida de String a Double
+        Double corX2;
+        //se castea la coordenada introducida de String a Double
+        Double corY2;
+
+        //si el texto del primer textfield no esta vacio y si corX es menor q el ancho del canvas
+        if (Metodos.validarTexto(txt_X, txt_Y, txt_Xx, txt_Yy)) {
+            //se castea la coordenada introducida de String a Double 
+            corX = Double.parseDouble(txt_X.getText());
             //se castea la coordenada introducida de String a Double
-            Double corY = Double.parseDouble(txt_Y.getText());
+            corY = Double.parseDouble(txt_Y.getText());
             //se castea la coordenada introducida de String a Double
-            Double corX2 = Double.parseDouble(txt_Xx.getText());
+            corX2 = Double.parseDouble(txt_Xx.getText());
             //se castea la coordenada introducida de String a Double
-            Double corY2 = Double.parseDouble(txt_Yy.getText());
-            //si el texto del primer textfield no esta vacio y si corX es menor q el ancho del canvas
-        if (Metodos.validarTexto(txt_X,txt_Y,txt_Xx,txt_Yy) && Metodos.validarCoordenadas(corY, corY, corX2, corY2,canvas)) {
-            
+            corY2 = Double.parseDouble(txt_Yy.getText());
             //seteamos a azul las nuevas lineas creadas a traves de este metodo
-            gc.setStroke(Color.BLUE);
-            //seteamos a 5 el ancho de las lineas creadas
-            gc.setLineWidth(5);           
-            //se le pasa al metodo strokeline los 4 parametro necesarios para dibujar una linea todos en double
-            gc.strokeLine(corX, corY, corX2, corY2);
+            if (Metodos.validarCoordenadas(corX, corY, corX2, corY2, canvas)) {
+                gc.setStroke(Color.BLUE);
+                //seteamos a 5 el ancho de las lineas creadas
+                gc.setLineWidth(5);
+                //se le pasa al metodo strokeline los 4 parametro necesarios para dibujar una linea todos en double
+                gc.strokeLine(corX, corY, corX2, corY2);
+            } else {
+                JOptionPane.showMessageDialog(null, " Width X  Canvas Max : 293 ,  Height Y  Canvas Max : 458 ");
+                System.out.println(" Width X  Canvas Max : 293 ,  Height Y  Canvas Max : 458 ");
+            }
         } else {
             //si el txt de las coordenadas esta vacio o excede la capacidad maxima del canvas se informa al usuario con un mensaje en pantalla
             JOptionPane.showMessageDialog(null, "Debe introducir coordenadas correctas primero");
-            JOptionPane.showMessageDialog(null, " Width X  Canvas Max : 293 ,  Height Y  Canvas Max : 458 ");
+            System.out.println("Debe introducir coordenadas correctas primero");
         }
     }
 
@@ -322,8 +332,8 @@ public class FXMLControllerPrime implements Initializable {
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 ///////////////////////
         Double[][] prueba = {
-         {1.012,2.123,3.345,4.456,5.543,6.543,7.456,8.673,9.456,0.356},
-         {7.133,0.135,8.456,2.654,1.234,10.067,54.456,9.432,23.235,11.959}
+            {1.012, 2.123, 3.345, 4.456, 5.543, 6.543, 7.456, 8.673, 9.456, 0.356},
+            {7.133, 0.135, 8.456, 2.654, 1.234, 10.067, 54.456, 9.432, 23.235, 11.959}
         };
         Metodos.ordenarArray(prueba);
     }

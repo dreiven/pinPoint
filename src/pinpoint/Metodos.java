@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -88,20 +90,13 @@ public class Metodos {
                 new ExtensionFilter("All Files", "*.*"));
         File selectedFile = fileChooser.showOpenDialog(pstage);
 
-        if (selectedFile != null) {
-            pstage.setTitle("notepad");
-
-            pstage.show();
-           
-//    pstage.showAndWait();
-//    selectedFile.getParent();
-        }
+   
 
         return pstage;
     }
 
-    public  static Double ordenarArray( Double[][] array){
-        
+    public static Double ordenarArray(Double[][] array) {
+
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[0].length; j++) {
                 //le pasamos al printf primer parametro con el espacio a ocupar por el valor %4, 
@@ -109,31 +104,45 @@ public class Metodos {
                 System.out.printf("%4.3f   ", array[i][j]);
 //                System.out.println("\n");
             }
-           
+
         }
-        
-   
-    return 0.0;
+
+        return 0.0;
+    }
+    //metodo que devuelve un Boolean para la comprobacion de los datos introducidos en los  textfield (Que haya valores y que sean numeros) 
+    public static Boolean validarTexto(TextField campo, TextField campo2, TextField campo3, TextField campo4) {
+        //se crea String con el patron que deseamos
+        String pattern = "[0-9]";
+        // Crea el objeto Pattern, que indicara el patron a condicionar y se compila en la variable r
+        Pattern r = Pattern.compile(pattern);
+        // Crea el objeto matcher m,m1,m2,m3 y se le asigna el valor del resultado de la comparacion entre el patron y el texto del textfield
+        Matcher m = r.matcher(campo.getText());
+        Matcher m1 = r.matcher(campo2.getText());
+        Matcher m2 = r.matcher(campo3.getText());
+        Matcher m3 = r.matcher(campo4.getText());
+       //si el textfield pasado por parametros tienen todos algun valor diferente  nos da true  
+        if (!campo.getText().isEmpty() && !campo2.getText().isEmpty() && !campo3.getText().isEmpty() && !campo4.getText().isEmpty()) {
+            //si encuentra el patron indicado (numeros de 0-9) devuelve true
+            if (m.find() && m1.find() && m2.find() && m3.find()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+        return false;
+    }
+   //metodo que devuelve un Boolean para comprobar que los valores no excedan el limite del canvas 
+    public static Boolean validarCoordenadas(Double corX, Double corY, Double corX2, Double corY2, Canvas canvas) {
+        //se pasan por parametro los resultados de los textField convertidos a Double ,
+        //si exceden el alto o el ancho del canvas nos da false
+        if (corX < canvas.getWidth() && corY < canvas.getHeight() && corX2 < canvas.getWidth() && corY2 < canvas.getHeight()) {
+
+            return true;
+
+        }
+
+        return false;
     }
 
-
-    public static Boolean validarTexto(TextField campo,TextField campo2,TextField campo3,TextField campo4) {
-         if (!campo.getText().isEmpty() && !campo2.getText().isEmpty() &&!campo3.getText().isEmpty() && !campo4.getText().isEmpty() ){
-        
-        return true ;
-         }
-         return false;
-    }
-    
-    public static Boolean validarCoordenadas(Double corX,Double corY,Double corX2,Double corY2, Canvas canvas){
-    
-    if(corX < canvas.getWidth() && corY < canvas.getHeight() && corX2 < canvas.getWidth() && corY2 < canvas.getHeight()){
-    
-    return true;
-    
-    }
-    
-    return false;
-    }
-    
 }
