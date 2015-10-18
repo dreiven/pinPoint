@@ -95,19 +95,19 @@ public class Metodos {
         return pstage;
     }
 
-    public static Double ordenarArray(Double[][] array) {
+    public static Double[][] ordenarArray(Double[][] val) {
 
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
+        for (int i = 0; i < val.length; i++) {
+            for (int j = 0; j < val[0].length; j++) {
                 //le pasamos al printf primer parametro con el espacio a ocupar por el valor %4, 
                 //la cantidad de decimales .3 a mostrar y el tipo de datos float f 
-                System.out.printf("%4.3f   ", array[i][j]);
+                System.out.printf("%4.3f   ", val[i][j]);
 //                System.out.println("\n");
             }
 
         }
 
-        return 0.0;
+        return val;
     }
     //metodo que devuelve un Boolean para la comprobacion de los datos introducidos en los  textfield (Que haya valores y que sean numeros) 
     public static Boolean validarTexto(TextField campo, TextField campo2, TextField campo3, TextField campo4) {

@@ -18,6 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.AnchorPane;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -298,6 +299,8 @@ public class FXMLControllerPrime implements Initializable {
             //se castea la coordenada introducida de String a Double 
             corX = Double.parseDouble(txt_X.getText());
             //se castea la coordenada introducida de String a Double
+            
+            // TDO
             corY = Double.parseDouble(txt_Y.getText());
             //se castea la coordenada introducida de String a Double
             corX2 = Double.parseDouble(txt_Xx.getText());
@@ -311,13 +314,18 @@ public class FXMLControllerPrime implements Initializable {
                 //se le pasa al metodo strokeline los 4 parametro necesarios para dibujar una linea todos en double
                 gc.strokeLine(corX, corY, corX2, corY2);
             } else {
-                JOptionPane.showMessageDialog(null, " Width X  Canvas Max : 293 ,  Height Y  Canvas Max : 458 ");
+                Logger.getLogger("debug").severe("Prueba............PRUEBA");
                 System.out.println(" Width X  Canvas Max : 293 ,  Height Y  Canvas Max : 458 ");
+                JOptionPane.showMessageDialog(null, " Width X  Canvas Max : 293 ,  Height Y  Canvas Max : 458 ");
+
             }
         } else {
+            Logger.getLogger("debug").severe("Prueba............PRUEBA");
+
+            System.out.println("Debe introducir coordenadas correctas primero");
             //si el txt de las coordenadas esta vacio o excede la capacidad maxima del canvas se informa al usuario con un mensaje en pantalla
             JOptionPane.showMessageDialog(null, "Debe introducir coordenadas correctas primero");
-            System.out.println("Debe introducir coordenadas correctas primero");
+
         }
     }
 
