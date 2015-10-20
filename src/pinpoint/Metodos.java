@@ -80,6 +80,8 @@ public class Metodos {
     }
 
     public static Stage elegirArchivo(Stage pstage) throws IOException {
+        Runtime aplicacion = Runtime.getRuntime(); 
+        try {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().addAll(
@@ -88,7 +90,15 @@ public class Metodos {
                 new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
                 new ExtensionFilter("Epub Files", "*.epub"),
                 new ExtensionFilter("All Files", "*.*"));
-        File selectedFile = fileChooser.showOpenDialog(pstage);
+        
+            File selectedFile = fileChooser.showOpenDialog(pstage);
+            if (selectedFile.canExecute()){;
+            aplicacion.load(selectedFile.toString());
+            aplicacion.exec("C:\\Windows\\system32\\notepad.exe",null,selectedFile);
+            }
+        } catch (Exception e) {
+        }
+        
 
    
 
